@@ -37,6 +37,7 @@ WORKDIR /root
 RUN \
   echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
   add-apt-repository -y ppa:webupd8team/java && \
+  apt-get update && \
   apt-get install -y oracle-java8-installer || true && \
   cd /var/lib/dpkg/info && \
   sed -i 's|JAVA_VERSION=8u151|JAVA_VERSION=8u162|' oracle-java8-installer.* && \
@@ -52,11 +53,13 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 # Install Python.
 RUN \
+  apt-get update && \
   apt-get install -y python python-dev python-pip python-virtualenv python-setuptools && \
   rm -rf /var/lib/apt/lists/*
 
 # Install Python 3.
 RUN \
+  apt-get update && \
   apt-get install -y python3 python3-dev python3-pip python3-virtualenv python3-setuptools && \
   rm -rf /var/lib/apt/lists/*
 
