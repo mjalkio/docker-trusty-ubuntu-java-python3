@@ -58,10 +58,6 @@ RUN \
   apt-get install -y python python-dev && \
   rm -rf /var/lib/apt/lists/*
 
-# Test some things
-RUN which python
-RUN python --version
-
 # Install Python 3.6
 RUN \
   add-apt-repository ppa:jonathonf/python-3.6 && \
@@ -69,17 +65,22 @@ RUN \
   apt-get install -y python3.6 && \
   rm -rf /var/lib/apt/lists/*
 
-# Test some things
-RUN which python
-RUN python --version
-
 # Ubuntu 14.04 Python packages are painfully old, we want the newest pip!
-RUN curl https://bootstrap.pypa.io/get-pip.py | python
 RUN curl https://bootstrap.pypa.io/get-pip.py | python3.6
 
-# Test some more
+# Check that all these point to pip3.6
 RUN pip --version
 RUN pip3.6 --version
+RUN which pip
+RUN which pip3.6
+
+RUN curl https://bootstrap.pypa.io/get-pip.py | python
+
+# We want the default pip to be python 2...
+RUN pip --version
+RUN pip3.6 --version
+RUN which pip
+RUN which pip3.6
 
 # Update some important packages
 RUN pip install --upgrade setuptools virtualenv
