@@ -55,14 +55,23 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 # Install Python.
 RUN \
   apt-get update && \
-  apt-get install -y python python-dev python-pip python-virtualenv python-setuptools && \
+  apt-get install -y python python-dev && \
   rm -rf /var/lib/apt/lists/*
 
-# Install Python 3.
+# Install Python 3.6
 RUN \
+  add-apt-repository ppa:jonathonf/python-3.6 && \
   apt-get update && \
-  apt-get install -y python3 python3-dev python3-pip python3-setuptools && \
+  apt-get install -y python3.6 && \
   rm -rf /var/lib/apt/lists/*
+
+# Ubuntu 14.04 Python packages are painfully old, we want the newest pip!
+curl https://bootstrap.pypa.io/get-pip.py | python
+curl https://bootstrap.pypa.io/get-pip.py | python3.6
+
+# Update some important packages
+pip install --upgrade setuptools virtualenv
+pip3 install --upgrade setuptools virtualenv
 
 # Define working directory.
 WORKDIR /data
