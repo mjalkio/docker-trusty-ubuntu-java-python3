@@ -33,7 +33,8 @@ ENV HOME /root
 WORKDIR /root
 
 # Install Java.
-# Note: sed commands taken from https://ubuntuforums.org/showthread.php?t=2374686&page=4&p=13731177#post13731177
+# sed commands are to update the oracle-java8-installer to the version of Java available as of 2018/01/19
+# For more info: https://ubuntuforums.org/showthread.php?t=2374686&page=4&p=13731177#post13731177
 RUN \
   echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
   add-apt-repository -y ppa:webupd8team/java && \
