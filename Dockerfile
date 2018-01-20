@@ -66,12 +66,12 @@ RUN \
   rm -rf /var/lib/apt/lists/*
 
 # Ubuntu 14.04 Python packages are painfully old, we want the newest pip!
-curl https://bootstrap.pypa.io/get-pip.py | python
-curl https://bootstrap.pypa.io/get-pip.py | python3.6
+RUN curl https://bootstrap.pypa.io/get-pip.py | python
+RUN curl https://bootstrap.pypa.io/get-pip.py | python3.6
 
 # Update some important packages
-pip install --upgrade setuptools virtualenv
-pip3 install --upgrade setuptools virtualenv
+RUN pip install --upgrade setuptools virtualenv
+RUN pip3 install --upgrade setuptools virtualenv
 
 # Define working directory.
 WORKDIR /data
