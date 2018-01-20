@@ -67,20 +67,8 @@ RUN \
 
 # Ubuntu 14.04 Python packages are painfully old, we want the newest pip!
 RUN curl https://bootstrap.pypa.io/get-pip.py | python3.6
-
-# Check that all these point to pip3.6
-RUN pip --version
-RUN pip3.6 --version
-RUN which pip
-RUN which pip3.6
-
+# Warning: make sure to run this second so that the default pip is Python 2
 RUN curl https://bootstrap.pypa.io/get-pip.py | python
-
-# We want the default pip to be python 2...
-RUN pip --version
-RUN pip3.6 --version
-RUN which pip
-RUN which pip3.6
 
 # Update some important packages
 RUN pip install --upgrade setuptools virtualenv
