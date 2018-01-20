@@ -1,7 +1,7 @@
 #
 # Dockerfile for Ubuntu 14.04 Trusty Tahr, Java 8, and Python 3
 #
-# Combinging together a number of Docker builds from [dockerfile](http://dockerfile.github.io/).
+# Based on a number of Docker builds from [dockerfile](http://dockerfile.github.io/).
 #
 # https://github.com/dockerfile/ubuntu
 # https://github.com/dockerfile/java/tree/master/oracle-java8
