@@ -71,8 +71,9 @@ RUN curl https://bootstrap.pypa.io/get-pip.py | python3.6
 RUN curl https://bootstrap.pypa.io/get-pip.py | python
 
 # Update some important packages
-RUN pip install --upgrade setuptools virtualenv
 RUN pip3.6 install --upgrade setuptools virtualenv
+# Warning: make sure to run this second so that the default virtualenv is Python 2
+RUN pip install --upgrade setuptools virtualenv
 
 # Define working directory.
 WORKDIR /data
