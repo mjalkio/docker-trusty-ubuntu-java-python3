@@ -62,7 +62,7 @@ RUN \
 RUN \
   add-apt-repository ppa:jonathonf/python-3.6 && \
   apt-get update && \
-  apt-get install -y python3.6 && \
+  apt-get install -y python3.6 python3.6-dev && \
   rm -rf /var/lib/apt/lists/*
 
 # Ubuntu 14.04 Python packages are painfully old, we want the newest pip!
